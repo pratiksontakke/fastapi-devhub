@@ -25,3 +25,4 @@ def create_post(
 @router.get("/", response_model=list[PostOut])
 def get_posts(db: Session = Depends(get_db)):
     return db.query(Post).all()
+
