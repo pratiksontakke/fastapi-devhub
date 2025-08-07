@@ -1,12 +1,18 @@
-# app/schemas/post.py
 from pydantic import BaseModel
+from typing import List
+from .post import Post
 
-class User(BaseModel):
-    user_id: int
+class UserBase(BaseModel):
     name: str
     email: str
+
+class UserCreate(UserBase):
     password: str
-    isvarified: bool
+
+class User(UserBase):
+    id: int
+    is_verified: bool
+    posts: List[Post] = []
 
     class Config:
         orm_mode = True

@@ -8,6 +8,7 @@ class Post(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     content = Column(String)
+    likes = Column(Integer, default=0)
     user_id = Column(Integer, ForeignKey("users.id"))
-    likes = Column(Integer)
-    # owner = relationship("User")
+
+    owner = relationship("User", back_populates="posts")

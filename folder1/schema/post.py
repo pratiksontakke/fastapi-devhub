@@ -1,10 +1,15 @@
-# app/schemas/post.py
 from pydantic import BaseModel
 
-class PostCreate(BaseModel):
+class PostBase(BaseModel):
     title: str
     content: str
     likes: int
+
+class PostCreate(PostBase):
+    pass
+
+class Post(PostBase):
+    id: int
     user_id: int
 
     class Config:
